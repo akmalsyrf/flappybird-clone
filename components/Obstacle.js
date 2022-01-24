@@ -2,7 +2,7 @@ import Matter from "matter-js";
 import React from "react";
 import { View } from "react-native";
 
-const Floor = (props) => {
+const Obstacle = (props) => {
   const widthBody = props.body.bounds.max.x - props.body.bounds.min.x;
   const heightBody = props.body.bounds.max.y - props.body.bounds.min.y;
 
@@ -14,7 +14,9 @@ const Floor = (props) => {
   return (
     <View
       style={{
-        backgroundColor: color,
+        borderWidth: 1,
+        borderColor: color,
+        borderStyle: "solid",
         position: "absolute",
         left: xBody,
         top: yBody,
@@ -25,18 +27,18 @@ const Floor = (props) => {
   );
 };
 
-export default (world, color, pos, size) => {
-  const initialFloor = Matter.Bodies.rectangle(pos.x, pos.y, size.width, size.height, {
-    label: "Floor",
+export default (world, label, color, pos, size) => {
+  const initialObstacle = Matter.Bodies.rectangle(pos.x, pos.y, size.width, size.height, {
+    label: "Obstacle",
     isStatic: true,
   });
 
-  Matter.World.add(world, initialFloor);
+  Matter.World.add(world, initialObstacle);
 
   return {
-    body: initialFloor,
+    body: initialObstacle,
     color,
     pos,
-    renderer: <Floor />,
+    renderer: <Obstacle />,
   };
 };
