@@ -9,7 +9,7 @@ import Physics from "./physics";
 export default function App() {
   const [running, setRunning] = useState(false);
   useEffect(() => {
-    setRunning(true);
+    setRunning(false);
   }, []);
   return (
     <View style={{ flex: 1 }}>
