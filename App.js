@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { GameEngine } from "react-native-game-engine";
 
-import entities from "./entities";
-import Physics from "./physics";
+import entities from "./src/entities";
+import Physics from "./src/Physics";
 
 export default function App() {
   const [running, setRunning] = useState(false);
@@ -36,6 +36,8 @@ export default function App() {
       >
         <StatusBar style="auto" hidden />
       </GameEngine>
+
+      {/* start button */}
       {!running ? (
         <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
           <TouchableOpacity
