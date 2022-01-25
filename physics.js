@@ -19,6 +19,11 @@ const Physics = (entities, { touches, time, dispatch }) => {
 
   //movement the obstacle
   for (let i = 1; i <= 2; i++) {
+    if (entities[`ObstacleTop${i}`].body.bounds.max.x <= 50 && !entities[`ObstacleTop${i}`].point) {
+      entities[`ObstacleTop${i}`].point = true;
+      dispatch({ type: "new_point" });
+    }
+
     //looping forever because the condition is never fulfilled
     if (entities[`ObstacleTop${i}`].body.bounds.max.x <= 0) {
       // console.log(entities[`ObstacleTop${i}`].body.bounds.max.x);
