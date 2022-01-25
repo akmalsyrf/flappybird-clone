@@ -1,6 +1,8 @@
 import Matter from "matter-js";
 import React from "react";
-import { View } from "react-native";
+import { ImageBackground, View } from "react-native";
+
+import BirdImg from "../assets/Bird.png";
 
 const Bird = (props) => {
   const widthBody = props.body.bounds.max.x - props.body.bounds.min.x;
@@ -12,15 +14,17 @@ const Bird = (props) => {
   const color = props.color;
 
   return (
-    <View
+    <ImageBackground
+      source={BirdImg}
+      resizeMode="cover"
       style={{
-        borderWidth: 1,
-        borderColor: color,
-        borderStyle: "solid",
+        // borderWidth: 1,
+        // borderColor: color,
+        // borderStyle: "solid",
         position: "absolute",
         left: xBody,
         top: yBody,
-        width: widthBody,
+        width: widthBody + 20,
         height: heightBody,
       }}
     />
